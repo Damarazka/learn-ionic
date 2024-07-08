@@ -20,16 +20,12 @@ const routes: Routes = [
     loadChildren: () => import('./item/item.module').then( m => m.ItemPageModule)
   },
   {
-    path: 'item-deteil',
-    loadChildren: () => import('./item-deteil/item-deteil.module').then( m => m.ItemDeteilPageModule)
-  },
-  {
-    path: 'update',
+    path: 'update/:id',
     loadChildren: () => import('./update/update.module').then( m => m.UpdatePageModule)
   },
   {
-    path: 'add',
-    loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
+    path: 'item-detail/:id',
+    loadChildren: () => import('./item-detail/item-detail.module').then( m => m.ItemDetailPageModule)
   },
 ];
 
