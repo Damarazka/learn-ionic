@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesItemService } from '../services-item.service';
 
 @Component({
   selector: 'app-item',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemPage implements OnInit {
 
-  constructor() { }
+  items : any[] = []
+
+  constructor(private servicesItemService : ServicesItemService) { }
 
   ngOnInit() {
+    this.loadItems()
   }
 
+  loadItems(){
+    this.servicesItemService.getItems().subscribe((data)=>{
+      this.items = data
+    })
+  }
+
+  deleteItem(id:number){
+    this.servicesItemService.deleteItem(id).subscribe(()=>{
+      this.loadItems()
+    })
+  }
 }
